@@ -50,26 +50,17 @@ The application structure is divided as follows:
 
 ---
 
-## Summary
+## How to Run the Application
 
-- The concurrency issue was fixed by locking seats during checkout using the `isTaken` flag.
-- Proper architecture separation ensures clear responsibilities between routes, controllers, services, and models.
-- Authentication via JWT guarantees secure seat booking tied to authenticated users.
+1. **Clone the repository**
 
----
+```bash
+git clone https://github.com/rabie234/tickit-backend-engineering-assesments.git
+cd tickit-backend-engineering-assesments
+npm install
+npm install ts-node typescript --save-dev
+add the .env file to the project
+npm run dev
+```
 
-## Packages Used
-
-- `express` — HTTP server framework
-- `mongoose` — MongoDB object modeling
-- `jsonwebtoken` — JWT token creation and verification
-- `bcrypt`/`bcryptjs` — Password hashing
-- `dotenv` — Environment variable management
-- `cors` — Cross-origin resource sharing
-- `nodemon` — Development utility for auto restarting server
-- `axios` — HTTP client for making requests
-- `@faker-js/faker` — Fake data generation for testing
-
----
-
-This document outlines the core problem, the implemented fix, and the overall system architecture for maintaining data integrity during ticket booking.
+## The production [link](http://tickit.devatro.com/)
