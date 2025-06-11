@@ -1,6 +1,5 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
-// Define an interface representing a document in MongoDB.
 export interface IEvent extends Document {
   eventID: string;
   name: string;

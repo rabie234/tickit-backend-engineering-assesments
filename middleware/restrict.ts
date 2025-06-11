@@ -3,7 +3,6 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import User, { IUser } from "../model/user.model";
 import Exception from "../lib/HttpException";
 
-// Extend Request to include `user` and `token_data`
 interface AuthenticatedRequest extends Request {
   user?: Partial<Omit<IUser, "password">>;
   body: {
@@ -12,7 +11,6 @@ interface AuthenticatedRequest extends Request {
   };
 }
 
-// Manually promisify jwt.verify to handle async/await
 const verifyToken = (token: string, secret: string): Promise<JwtPayload> => {
   return new Promise((resolve, reject) => {
     jwt.verify(token, secret, (err, decoded) => {

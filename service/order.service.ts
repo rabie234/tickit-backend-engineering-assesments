@@ -19,7 +19,7 @@ export const createOrder = async ({
     amount,
     currency,
     status: "completed",
-    seats: [seat], // still storing as array for schema consistency
+    seats: [seat],
   });
 
   return await order.save();
@@ -29,7 +29,7 @@ export const getAllOrders = async (): Promise<IOrder[]> => {
   try {
     const events = await Order.find()
       .populate("customerID", "-password")
-      .sort({ createdAt: -1 }); // optionally sort by creation date
+      .sort({ createdAt: -1 });
     return events;
   } catch (error) {
     throw new Error("Failed to fetch events: " + (error as Error).message);
