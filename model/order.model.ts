@@ -1,9 +1,9 @@
 // models/order.model.ts
 
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document, Model, Types } from "mongoose";
 
 export interface IOrder extends Document {
-  customerID: string;
+  customerID: Types.ObjectId; // <-- updated to ObjectId type
   amount: number;
   currency: string;
   status: "pending" | "completed" | "failed";
@@ -15,8 +15,9 @@ export interface IOrder extends Document {
 const orderSchema: Schema<IOrder> = new Schema(
   {
     customerID: {
-      type: String,
+      type: Schema.Types.ObjectId,
       required: true,
+      ref: "User", // optional: reference the User collection
     },
     amount: {
       type: Number,

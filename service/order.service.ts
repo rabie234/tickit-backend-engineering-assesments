@@ -24,3 +24,14 @@ export const createOrder = async ({
 
   return await order.save();
 };
+
+export const getAllOrders = async (): Promise<IOrder[]> => {
+  try {
+    const events = await Order.find()
+      .populate("customerID", "-password")
+      .sort({ createdAt: -1 }); // optionally sort by creation date
+    return events;
+  } catch (error) {
+    throw new Error("Failed to fetch events: " + (error as Error).message);
+  }
+};

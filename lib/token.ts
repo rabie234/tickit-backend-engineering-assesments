@@ -13,7 +13,7 @@ interface TokenResult {
 
 export const signAccessToken = (payload: TokenPayload): TokenResult => {
   const options: SignOptions = {
-    expiresIn: 3,
+    expiresIn: "24h",
   };
 
   const token = jwt.sign(payload, accessTokenSecret, options);

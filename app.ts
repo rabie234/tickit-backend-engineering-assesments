@@ -4,6 +4,7 @@ import connectToDatabase from "./config/database.config";
 import errorMiddleware from "./middleware/error";
 import config from "./config/app.config";
 import eventRouter from "./route/event.route";
+import orderRouter from "./route/order.route";
 import authRouter from "./route/auth.route";
 import bookingRouter from "./route/booking.route";
 
@@ -15,6 +16,7 @@ const initializeMiddlewares = (app: Express) => {
 
 const initializeRoutes = (app: Express) => {
   app.use("/events", eventRouter);
+  app.use("/order", orderRouter);
   app.use("/book", bookingRouter);
   app.use("/auth", authRouter);
   app.use("*", (_req, res) => {

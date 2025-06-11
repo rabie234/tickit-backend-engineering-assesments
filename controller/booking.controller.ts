@@ -10,15 +10,16 @@ export const bookSeat = async (
 ) => {
   const { seatID } = req.body;
   console.log("-------------------------------------");
-  console.log(req);
+  console.log(req.user);
 
   try {
     const result = await buyTicket(seatID);
     const seat = await Seat.findOne({
       seatID: seatID,
     });
+    const user = req.user;
     await createOrder({
-      customerID: "3",
+      customerID: user?._id ? user?._id : "0",
       amount: seat?.price ? seat.price : 0,
       currency: "US",
       seat: seatID,

@@ -31,8 +31,7 @@ export const protect = async (
 ): Promise<void> => {
   try {
     let token: string | undefined;
-    console.log("--------------------------");
-    console.log(req.headers.authorization);
+
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
@@ -48,8 +47,8 @@ export const protect = async (
 
     try {
       decoded = await verifyToken(token, __config.jwt.access.secret);
-      console.log(decoded);
     } catch (err: any) {
+      console.log(err);
       if (err.name === "JsonWebTokenError") {
         return next(new Exception(401, "Invalid authentication token"));
       } else if (err.name === "TokenExpiredError") {
